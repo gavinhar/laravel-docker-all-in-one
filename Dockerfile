@@ -21,13 +21,16 @@ RUN apt-get update && apt-get install -y \
 
 # --- INSTALL PHP EXTENSIONS ---
 RUN docker-php-ext-install \
-    pdo_mysql \
-    zip \
-    mbstring \
-    exif \
     pcntl \
+    opcache \
+    pdo \
+    intl \
+    zip \
+    gd \
+    exif \
+    ftp \
     bcmath \
-    gd
+    mbstring
 
 # --- INSTALL NODE.JS (v18 LTS) ---
 RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
