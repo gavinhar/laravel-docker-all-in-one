@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+    app:
+        build: .
+        ports:
+            - "8080:80"
+        volumes:
+            - ${PWD}/.env:/var/www/.env
+            - ${PWD}/database/database.sqlite:/var/www/database/database.sqlite
+        environment:
+            - DB_DATABASE=/var/www/database/database.sqlite
