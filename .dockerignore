@@ -1,0 +1,11 @@
+vendor
+node_modules
+database/database.sqlite
+bootstrap/ssr
+.github
+public/build
+storage/app/*
+storage/logs/*
+tests
+.env
+.env.example

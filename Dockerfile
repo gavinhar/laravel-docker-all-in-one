@@ -48,6 +48,11 @@ RUN chown -R www-data:www-data /var/www \
 COPY docker/nginx/default.conf /etc/nginx/sites-available/default
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# --- BUILD ---
+RUN composer install
+RUN npm ci
+RUN npm run build:ssr
+
 # --- RUNTIME ENV VARS ---
 ENV INERTIA_SSR_ENABLED=true
 
