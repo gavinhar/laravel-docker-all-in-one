@@ -9,3 +9,4 @@ storage/logs/*
 tests
 .env
 .env.example
+.git
