@@ -3,6 +3,7 @@ FROM php:8.4-fpm
 # --- BUILD ENV VARS ---
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NODE_VERSION=22
+ENV PHP_OPCACHE_ENABLE=1
 
 # --- INSTALL SYSTEM DEPENDENCIES ---
 RUN apt-get update && apt-get install -y \
@@ -53,7 +54,7 @@ COPY docker/nginx/default.conf /etc/nginx/sites-available/default
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # --- BUILD ---
-RUN composer install
+RUN composer install --no-interaction --optimize-autoloader --no-dev
 RUN npm ci
 RUN npm run build:ssr
 
